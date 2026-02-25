@@ -25,7 +25,7 @@ Traditional LLM routing relies on making expensive API calls to another LLM just
 Works out of the box with [Bun](https://bun.com/), Node.js, and other modern JS environments.
 
 ```bash
-bun install    # or npm install / yarn add
+bun install llm-switchboard  # or npm install / yarn add
 ```
 
 ---

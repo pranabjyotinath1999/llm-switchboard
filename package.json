@@ -1,6 +1,6 @@
 {
   "name": "llm-switchboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Blazing-fast, zero-cost local LLM router. Classify and route prompts to specialized AI models (OpenAI, Claude, Gemini, Llama) with <1ms latency using heuristic rules.",
   "repository": {
     "type": "git",
@@ -15,7 +15,8 @@
   "type": "module",
   "scripts": {
     "test": "npx tsx test-router.ts",
-    "build": "bun build ./src/index.ts --outdir ./dist --target node && tsc --emitDeclarationOnly --outDir types"
+    "build": "bun build ./src/index.ts --outdir ./dist --target node && tsc --emitDeclarationOnly --outDir types",
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "dist",
