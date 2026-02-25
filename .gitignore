@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+bun.lockb
+bun.lock
+
+# build artifacts
+dist/
+types/
+*.tsbuildinfo
+*.tgz
+
+# temporary test files/logs
+bun_out*.txt
+test-dist.js
+
+# coverage
+coverage/
+*.lcov
+
+# logs
+logs
+*.log
+
+# environment
+.env*
+!.env.example
+
+# IDEs
+.idea/
+.vscode/
+.DS_Store
