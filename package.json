@@ -1,6 +1,6 @@
 {
   "name": "llm-switchboard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Blazing-fast, zero-cost local LLM router. Classify and route prompts to specialized AI models (OpenAI, Claude, Gemini, Llama) with <1ms latency using heuristic rules.",
   "repository": {
     "type": "git",
@@ -26,25 +26,32 @@
   ],
   "keywords": [
     "llm",
-    "router",
-    "ai",
-    "prompt-engineering",
+    "llm-router",
+    "ai-router",
+    "prompt-routing",
+    "model-orchestration",
     "openai",
     "claude",
     "gemini",
     "llama",
-    "orchestration",
-    "cost-optimization",
-    "agentic",
-    "routing",
-    "classification",
-    "natural-language-processing",
-    "nlp",
+    "deepseek",
     "ai-gateway",
+    "prompt-engineering",
+    "cost-optimization",
+    "latency-optimization",
+    "agentic-workflows",
+    "typescript",
+    "classification",
+    "nlp",
+    "serverless-ai",
     "switchboard"
   ],
-  "author": "",
+  "author": "Uo1428",
   "license": "MIT",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -52,3 +59,4 @@
     "typescript": "^5.9.3"
   }
 }
+

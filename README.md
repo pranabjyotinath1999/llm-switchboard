@@ -1,136 +1,131 @@
 <div align="center">
   <h1>🔀 llm-switchboard</h1>
-  <p><strong>Zero-cost, blazing-fast local routing for LLMs.</strong></p>
+  <p><strong>Blazing-fast, zero-overhead local LLM router for production AI apps.</strong></p>
+
+[![NPM Version](https://img.shields.io/npm/v/llm-switchboard?style=flat-square&color=CB3837)](https://www.npmjs.com/package/llm-switchboard)
+[![License](https://img.shields.io/github/license/Uo1428/llm-switchboard?style=flat-square&color=blue)](https://github.com/Uo1428/llm-switchboard/blob/main/LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/Uo1428/llm-switchboard?style=flat-square&color=ffd700)](https://github.com/Uo1428/llm-switchboard/stargazers)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+
   <p>
-    Navigate the chaotic world of LLM models with a smart, <strong>&lt; 1ms latency</strong> router. It categorizes prompts and executes them against your best, cheapest, or most specialized models automatically.
+    Optimize LLM costs and latency by routing prompts to the right model locally. No extra API calls, no network overhead, just smart heuristic classification in <b>&lt; 1ms</b>.
   </p>
 </div>
 
 ---
 
+## 🌟 Key Features
+
+- 💸 **Zero-Cost Routing:** Runs 100% locally. No expensive LLM-based classification calls.
+- ⚡ **Ultra-Low Latency:** Heuristic-based classification adds less than **1ms** to your stack.
+- 🧠 **Tiered Intelligence:** Automatically maps prompts to `SIMPLE`, `MEDIUM`, `COMPLEX`, or `REASONING` tiers.
+- 🤖 **Agentic Detection:** Specialized logic to identify multi-step, tool-heavy tasks.
+- 🌍 **Multilingual Support:** Native intent detection for 10+ major languages.
+- 🛠️ **Developer First:** Type-safe, customizable, and works with Bun, Node.js, and Deno.
+
+---
+
 ## 🚀 Why llm-switchboard?
 
-Traditional LLM routing relies on making expensive API calls to another LLM just to decide where a prompt should go. **llm-switchboard** changes the game: It uses highly optimized, local heuristic rules to parse prompts instantly and route them to designated **tiers**. 
+In high-volume AI applications, using high-end models (like GPT-4o or Claude 3.5 Sonnet) for every request is a waste of both time and money. Traditional routers use *another* LLM call to classify the prompt, which adds latency and cost.
 
-* 💸 **Zero-Cost Routing:** Runs 100% locally. No API calls to classify prompts.
-* ⚡ **Blazing Fast:** `< 1ms` latency overhead.
-* 🧠 **Smart Categorization:** Distinguishes between `SIMPLE`, `MEDIUM`, `COMPLEX`, and `REASONING` tasks.
-* 🤖 **Agentic Detection:** Automatically detects multi-step, iterative "agentic" tasks and routes them to models that excel at tool use and persistence.
-* 🛠️ **Highly Customizable:** Set global defaults at startup or override models per-request.
+**llm-switchboard** solves this by using a high-performance heuristic engine that scores prompts across **14 weighted dimensions** instantly.
 
 ---
 
 ## 📦 Installation
 
-Works out of the box with [Bun](https://bun.com/), Node.js, and other modern JS environments.
-
 ```bash
-bun install llm-switchboard  # or npm install / yarn add
+# Using Bun (Recommended)
+bun install llm-switchboard
+
+# Using NPM
+npm install llm-switchboard
+
+# Using Yarn
+yarn add llm-switchboard
 ```
 
 ---
 
-## 🚦 Core Concepts (Tiers)
+## 🚦 Smart Tiering System
 
-Every incoming prompt is assigned a tier. You map which LLM handles which tier.
+llm-switchboard classifies every prompt into one of four tiers, allowing you to map specific models to specific task complexities.
 
-| Tier | Difficulty | Best For | Typical Default Model |
-| :--- | :---: | :--- | :--- |
-| 🟢 **`SIMPLE`** | Low | Greetings, basic translation, simple facts, yes/no questions. | `moonshot/kimi-k2.5` |
-| 🟡 **`MEDIUM`** | Moderate | Standard coding questions, simple architecture, moderate logic. | `xai/grok-code-fast-1` |
-| 🔴 **`COMPLEX`** | High | Large context tracing, heavy constraints, complex output formats. | `google/gemini-3.1-pro-preview` |
-| 🧠 **`REASONING`**| Extreme | Deep math, formal proofs, strict step-by-step logic chains. | `xai/grok-4-1-fast-reasoning` |
-
----
-
-## 🧬 How It Works (The Logic)
-
-`llm-switchboard` doesn't guess. It parses every prompt and scores it across **14 weighted dimensions** to calculate a confidence score, mapping the aggregate to a specific tier boundary. 
-
-### 📊 The 14 Dimensions Analyzed
-* ✅ Estimated Token Count (Short vs Long)
-* ✅ Code Keywords & Technical Terminology
-* ✅ Reasoning Markers ("step by step") & Multi-step Patterns
-* ✅ Imperative Verbs ("build", "create")
-* ✅ Constraint Indicators ("under budget", "limit")
-* ✅ Formatting Demands ("json", "table") & Reference Complexity
-* ✅ Negation Complexity & Domain Specificity
-* ✅ Explicit Agentic Task Signatures (File operations, execution commands)
-
-### 🌍 Multilingual Support
-The heuristic engine natively understands intent signatures in **10 languages**:
-🇺🇸 English | 🇨🇳 Chinese | 🇯🇵 Japanese | 🇷🇺 Russian | 🇩🇪 German | 🇪🇸 Spanish | 🇵🇹 Portuguese | 🇰🇷 Korean | 🇸🇦 Arabic
+| Tier | Task Type | Ideal For | Default Model |
+| :--- | :--- | :--- | :--- |
+| 🟢 **`SIMPLE`** | Utility | Greetings, yes/no, simple data extraction. | `moonshot/kimi-k2.5` |
+| 🟡 **`MEDIUM`** | Creative | Summarization, standard chat, basic coding. | `xai/grok-code-fast-1` |
+| 🔴 **`COMPLEX`** | Technical | Systems design, deep analysis, large context. | `google/gemini-3.1-pro-preview` |
+| 🧠 **`REASONING`**| Logic | Math, proofs, complex debugging, multi-step logic. | `xai/grok-4-1-fast-reasoning` |
 
 ---
 
-## 📖 Usage Guide
+## 📖 Usage
 
-You have two powerful ways to configure routing.
-
-<details open>
-<summary><b>1. Global Setup (Application Startup)</b></summary>
-<br>
-
-Ideal for setting up your preferred models once when your server boots. This deep-merges with the default logic.
+### ⚙️ Global Configuration
+Set your model preferences once at application startup.
 
 ```typescript
 import { configureRouter, getProductionModel } from "llm-switchboard";
 
-// Initialize switchboard with your custom choices
+// Configure your routing table
 configureRouter({
   tiers: {
-    SIMPLE: { 
-      primary: "my-custom-llama-3", // Overrides the default SIMPLE primary model
-    }
+    SIMPLE: { primary: "meta-llama/llama-3-8b-instruct" },
+    MEDIUM: { primary: "anthropic/claude-3-haiku" }
   },
-  overrides: { 
-    agenticMode: true // Optional: Force agentic detection natively
+  overrides: {
+    agenticMode: true
   }
 });
 
-// Route!
-const bestModel = getProductionModel("Hello, what is the capital of France?");
-console.log(bestModel); // => "my-custom-llama-3"
+// Get the best model for a prompt
+const model = getProductionModel("What is the weather like in Tokyo?");
+console.log(model); // => "meta-llama/llama-3-8b-instruct"
 ```
-</details>
 
-<details>
-<summary><b>2. Per-Request Overrides (Dynamic Routing)</b></summary>
-<br>
-
-Need absolute certainty for a specific task? Override the global configuration for a single request. Perfect for multi-tenant apps or privacy-sensitive endpoints.
+### 🎯 Per-Request Overrides
+Override global settings for specific, high-priority, or sensitive prompts.
 
 ```typescript
-import { getProductionModel } from "llm-switchboard";
-
-const sensitivePrompt = "Analyze this highly confidential dataset.";
-
-const isolatedModel = getProductionModel(sensitivePrompt, {
+const model = getProductionModel(prompt, {
   customTiers: {
     COMPLEX: { 
-      primary: "local-mixtral-8x7b", // Forces this model for this request only
-      fallback: [] // Disables any cloud fallbacks for total privacy
+      primary: "local-mixtral-8x7b",
+      fallback: [] // No cloud fallbacks for privacy
     }
   }
 });
-
-console.log(isolatedModel); // => "local-mixtral-8x7b"
 ```
-</details>
 
 ---
 
-## 🧪 Testing
+## 📊 How it Works
 
-Want to see how exactly it classifies different prompts? Run the built-in test suite:
+The classification engine analyzes prompts across multiple dimensions including:
+- **Token Density:** Estimating semantic weight vs. length.
+- **Syntactic Markers:** Detecting code chunks, mathematical notation, and imperative verbs.
+- **Instruction Depth:** Identifying complex formatting demands (JSON, Tables, CSV).
+- **Agentic Signatures:** Multi-step planning patterns and tool-use intent.
+- **Domain Context:** Scanning for technical terminology and high-entropy keywords.
+
+---
+
+## 🧪 Development & Testing
+
+We include a comprehensive test suite to help you benchmark classification accuracy.
 
 ```bash
 bun run test
 ```
 
-*This test runs through a suite of examples (Greetings, Code, Math, Agentic) and will print out the standard, globally overridden, and contextually overridden model selections to your console.*
-
 ---
+
+## 📄 License
+MIT © [Uo1428](https://github.com/Uo1428)
+
 <div align="center">
-  <i>Built for the modern AI engineering stack.</i>
+  <sub>Built with ❤️ for the open-source AI community.</sub>
 </div>
+
